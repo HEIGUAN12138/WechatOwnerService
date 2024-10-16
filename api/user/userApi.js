@@ -75,7 +75,7 @@ export function sendSmsCode(_link, _that) {
 						wx.showToast({
 							title:_json.data,
 							icon: 'none',
-							duration: 2000
+							duration: 5000
 						});
 						wx.hideLoading();
 						timer(_that);
@@ -85,7 +85,7 @@ export function sendSmsCode(_link, _that) {
 					wx.showToast({
 						title: _json.msg,
 						icon: 'none',
-						duration: 2000
+						duration: 5000
 					});
 					reject();
 				},
