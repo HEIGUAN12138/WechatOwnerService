@@ -235,7 +235,7 @@
 			}
 			let _communityInfo = context.getCurrentCommunity();
 			let _lastDate = new Date(_fee.endTime);
-			this.receivableAmount = _receivableAmount;
+			this.receivableAmount = _fee.amountOwed;
 			this.communityId = _communityInfo.communityId;
 			this.communityName = _communityInfo.communityName;
 			this.floorNum = _fee.floorNum;
@@ -245,7 +245,7 @@
 			this.layer = _fee.layer;
 			this.builtUpArea = _fee.builtUpArea;
 			this.feeId = _fee.feeId;
-			this.amount = _amount;
+			this.amount = _fee.amountOwed;
 			this.additionalAmount = _fee.additionalAmount;
 			this.ordEndTime = _fee.endTime;
 			this.formatEndTime = date2String(_fee.endTime);
