@@ -400,7 +400,7 @@ export function authOwner(_data) {
 				wx.showToast({
 					title: _json.msg,
 					icon: 'none',
-					duration: 2000
+					duration: 5000
 				});
 				if (_json.code != 0) {
 					reject(_json.msg);
