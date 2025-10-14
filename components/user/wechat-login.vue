@@ -8,7 +8,8 @@
 </template>
 
 <script>
-	import {
+	import { boolAttrs } from '../jyf-parser/libs/config';
+import {
 		wechatLogin
 	} from '@/api/user/userApi.js';
 	import {
@@ -27,6 +28,12 @@
 				appId:''
 			};
 		},
+		props: {
+		  readme: {
+		    type: Boolean,
+		    default: false,
+		  },
+		},
 		methods: {
 			_initWechatLogin: function() {
 				let _that = this;
@@ -43,6 +50,7 @@
 				});
 			},
 			_getPhoneNumber(e) {
+				
 				if (e.detail.errMsg === "getPhoneNumber:ok") {
 					// 获取到加密数据
 					const {
@@ -61,6 +69,13 @@
 				}
 			},
 			_loginByPhoneNumber() {
+				if(!this.readme){
+					wx.showToast({
+						title: '请阅读用户协议和隐私政策',
+						icon: "none"
+					});
+					return;
+				}
 				wechatLogin({
 						encryptedData: this.encryptedData,
 						iv: this.iv,

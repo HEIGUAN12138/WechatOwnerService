@@ -18,15 +18,8 @@
 			<input v-model="msgCode" placeholder="请输入短信验证码" name="input"></input>
 			<button class='cu-btn bg-green shadow' :disabled="btnDisabled" @click="_sendMsgCode()">{{btnValue}}</button>
 		</view>
-		<view class="padding flex justify-start">
-			<checkbox-group @change="_changeReadme">
-				<checkbox style="transform: scale(0.7)" value="readme"></checkbox>
-			</checkbox-group>
-			<view class="read-me">
-				<text class="margin-left-xs">我已阅读</text>
-				<text class="user-read" @click="_readMe">《用户须知》</text>
-			</view>
-		</view>
+	<user-protocol  @readme="_readme"></user-protocol>
+	
 		<view class="padding flex flex-direction margin-top">
 			<button class="cu-btn bg-green   lg" @click="_doRegister()">提交</button>
 		</view>
@@ -38,6 +31,7 @@
 	const constant = context.constant;
 	import conf from '../../conf/config';
 	import {sendSmsCode,ownerRegiter} from '../../api/user/userApi.js';
+	import userProtocol from '../../components/user/user-protocol.vue';
 
 	export default {
 		data() {
@@ -51,7 +45,7 @@
 				btnDisabled: false,
 				password: '',
 				rePassword: '',
-				readme:false,
+				readme:true,
 			};
 		},
 		/**
@@ -60,17 +54,14 @@
 		onLoad: function(options) {
 			let _that = this;
 		},
+		components:{
+			userProtocol
+		},
 		methods: {
 			_sendMsgCode: function() {
 				sendSmsCode(this.link,this)
 			},
-			_changeReadme:function(e){
-				if(e.detail.value && e.detail.value.length>0){
-					this.readme = true;
-				}else{
-					this.readme =false;
-				}
-			},
+
 			_doRegister: function(e) {
 				let _communityId = uni.getStorageSync("DEFAULT_COMMUNITY_ID")
 				if(!_communityId){
@@ -126,12 +117,11 @@
 				_that.areaCode = data.data[2].code;
 				console.log(data);
 			},
-			
-			_readMe:function(){
-				uni.navigateTo({
-					url:'/pages/login/registerProtocol'
-				})
+			_readme:function(_value){
+				this.readme = _value
 			}
+			
+			
 		}
 	};
 </script>
@@ -149,12 +139,5 @@
 		text-align: center;
 	}
 	
-	.read-me{
-		line-height: 64upx;
-	}
-	
-	.user-read{
-		margin-left: 10upx;
-		color: darkgreen;
-	}
+
 </style>

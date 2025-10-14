@@ -12,20 +12,25 @@
 	export default {
 		data() {
 			return {
-				protocol: ''
+				protocol: '',
+				type:'protocol'
 			}
 		},
-		onLoad() {
+		onLoad(options) {
+			this.type = options.type;
 			this._loadProtocol();
 		},
 		components: {
 			jyfParser
 		},
 		methods: {
-			_loadProtocol: function() {
+			 _loadProtocol: function() {
 				let _that = this;
-				getRegisterProtocol().then(_data => {
+				 getRegisterProtocol().then(_data => {
 					_that.protocol = _data[0].userProtocol
+					if(_that.type == 'secure'){
+						_that.protocol = _data[0].merchantProtocol
+					}
 				})
 			}
 		}

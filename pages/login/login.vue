@@ -31,7 +31,7 @@
 		<view class="padding flex flex-direction margin-top">
 			<button class="cu-btn bg-blue lg" @click="_doLogin()">登录</button>
 			<!-- #ifdef MP-WEIXIN -->
-			<wechat-login ref="wechatLoginRef"></wechat-login>
+			<wechat-login ref="wechatLoginRef" :readme="readme"></wechat-login>
 			<!-- #endif -->
 		</view>
 		<!-- #ifdef H5 -->
@@ -40,6 +40,9 @@
 			<view class="text-green" @click="_doRegister()">注册</view>
 		</view>
 		<!-- #endif -->
+		
+		<user-protocol @readme="_readme"></user-protocol>
+		
 
 	</view>
 </template>
@@ -48,6 +51,7 @@
 	var _this;
 	import wInput from '@/components/watch-input.vue' //input
 	import wButton from '@/components/watch-button.vue' //button
+	import userProtocol from '../../components/user/user-protocol.vue';
 	import {
 		sendSmsCode,
 		ownerLogin,
@@ -84,7 +88,8 @@
 				msgCode: '',
 				btnDisabled: false,
 				btnValue: '验证码',
-				phoneLoginName: '验证码登录'
+				phoneLoginName: '验证码登录',
+				readme:true
 
 			};
 		},
@@ -104,11 +109,19 @@
 			// #endif
 		},
 		components:{
-			wechatLogin
+			wechatLogin,
+			userProtocol
 		},
 		methods: {
 			_doLogin: function() {
 				let _that = this;
+				if(!this.readme){
+					wx.showToast({
+						title: '请阅读用户协议和隐私政策',
+						icon: "none"
+					});
+					return;
+				}
 				if (this.username == '') {
 					wx.showToast({
 						title: '请填写用户名',
@@ -163,6 +176,9 @@
 				}
 				this.username = '';
 				this.password = '';
+			},
+			_readme:function(_value){
+				this.readme = _value
 			}
 
 		}
