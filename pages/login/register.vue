@@ -45,7 +45,7 @@
 				btnDisabled: false,
 				password: '',
 				rePassword: '',
-				readme:true,
+				readme:false,
 			};
 		},
 		/**

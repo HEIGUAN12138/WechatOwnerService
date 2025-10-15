@@ -89,7 +89,7 @@
 				btnDisabled: false,
 				btnValue: '验证码',
 				phoneLoginName: '验证码登录',
-				readme:true
+				readme:false
 
 			};
 		},

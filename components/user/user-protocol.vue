@@ -19,7 +19,7 @@
 		name:"user-protocol",
 		data() {
 			return {
-				readme:true,
+				readme:false,
 			};
 		},
 		methods:{
