@@ -183,7 +183,7 @@
 				let params = {
 					page: 1,
 					row: 50,
-					communityId: this.roomDetail.communityId,
+					communityId: getCommunityId(),
 					payerObjId: this.roomDetail.roomId,
 					state: '2008001'
 				};
