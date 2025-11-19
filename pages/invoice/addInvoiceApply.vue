@@ -137,7 +137,7 @@
 					communityId: getCommunityId(),
 					ownerId: this.ownerId,
 					state: '1400',
-					openInvoice:'D', 
+					openInvoice:'N', 
 				}).then(_details => {
 					_details.forEach(function(_item) {
 						_item.selected = "1";
