@@ -31,7 +31,8 @@ import {
 import conf from '../conf/config.js';
 
 import {
-	getMallCommunityId
+	getMallCommunityId,
+	getMallCommunityName
 } from '@/api/community/communityApi.js';
 
 
@@ -40,20 +41,24 @@ export function navigateH5(_url) {
 	if (_url.indexOf("http") < 0 && _url.indexOf("https") < 0) {
 		_url = conf.mallUrl + '#' + _url;
 	}
-	if (_url.indexOf("?") > 0) {
+	let hasQuery = _url.indexOf("?") > 0;
+	if (hasQuery) {
 		_url = _url + "&hcCommunityId=" + getMallCommunityId();
 	} else {
 		_url = _url + "?hcCommunityId=" + getMallCommunityId();
 	}
+	_url = _url + "&hcCommunityName=" + encodeURIComponent(getMallCommunityName() || "");
 	_url = _url + "&mallFrom=HC_H5";
 	window.location.href = _url;
 };
 export function navigateMP(_url) {
-	if (_url.indexOf("?") > 0) {
+	let hasQuery = _url.indexOf("?") > 0;
+	if (hasQuery) {
 		_url = _url + "&hcCommunityId=" + getMallCommunityId();
 	} else {
 		_url = _url + "?hcCommunityId=" + getMallCommunityId();
 	}
+	_url = _url + "&hcCommunityName=" + encodeURIComponent(getMallCommunityName() || "");
 	_url = _url + "&mallFrom=HC_MINI"
 	let params = _url.split("?")[1].split("&")
 	let obj = {};
