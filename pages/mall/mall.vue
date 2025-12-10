@@ -155,7 +155,7 @@
 	export default {
 		data() {
 			return {
-				selectCommunityName: "雪峰商贸城",
+				selectCommunityName: "",
 				selectCommunityId: '',
 				COMMUNITY_STORAGE_KEY: 'HC_MALL_SELECTED_COMMUNITY', // 小区缓存键
 				categoryList: [],
