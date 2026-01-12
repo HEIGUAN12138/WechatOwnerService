@@ -808,15 +808,6 @@
             
         }
         ,{
-            "path" : "pages/complaint/examineStaffScore",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "评分",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
             "path" : "pages/machine/chargeMachineOrders",
             "style" :                                                                                    
             {
