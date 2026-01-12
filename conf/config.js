@@ -15,13 +15,13 @@ const baseUrl = '/';
 
 // #ifndef H5
 //服务器域名 小程序 或者 app 时 后端地址 
-const baseUrl = 'http://demo.homecommunity.cn/';
+const baseUrl = 'https://wy.2hy.net/';
 // #endif
 
-let commonBaseUrl = 'http://demo.homecommunity.cn/';
+let commonBaseUrl = 'https://wy.2hy.net/';
 
 //商城的url
-let mallUrl = 'http://mallapp.homecommunity.cn/';
+let mallUrl = 'http://mallapp.2hy.net/';
 
 //商城小程序ID
 let mallMinAppId = "xx";

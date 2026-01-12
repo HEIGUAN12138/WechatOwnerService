@@ -189,12 +189,6 @@
 						ownerAuth:false
 					},
 					{
-						name: '物业打分',
-						src: this.imgUrl + '/h5/images/serve/my9.png',
-						href: '/pages/complaint/examineStaff',
-						ownerAuth:true
-					},
-					{
 						name: '小区公示',
 						src: this.imgUrl + '/h5/images/serve/my1.png',
 						href: '/pages/common/communityPublicity',

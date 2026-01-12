@@ -781,15 +781,6 @@
             
         }
         ,{
-            "path" : "pages/complaint/examineStaff",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "物业人员打分",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
             "path" : "pages/machine/chargeMachineOrder",
             "style" :                                                                                    
             {
