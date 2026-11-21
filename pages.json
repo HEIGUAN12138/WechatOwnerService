@@ -294,13 +294,6 @@
 				"enablePullDownRefresh": false
 			}
 		}, {
-			"path": "pages/hcWebView/hcWebView",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom"
-			}
-		}, {
 			"path": "pages/hcWebViewRefresh/hcWebViewRefresh",
 			"style": {
 				"navigationBarTitleText": "用户鉴权",

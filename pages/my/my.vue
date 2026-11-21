@@ -102,7 +102,8 @@
 		getCouponUsers
 	} from '@/api/fee/feeApi.js';
 	import {
-		getUserName
+		getUserName,
+		userLogout
 	} from '@/api/user/userApi.js';
 	import {
 		hasLogin
@@ -267,13 +268,30 @@
 					title: this.$t('my.tip'),
 					content: this.$t('my.logoutConfirm'),
 					success: (res) => {
-						if (res.confirm) {
-							uni.clearStorageSync();
-							uni.reLaunch({
-								url: '/pages/index/index'
-							});
+						if (!res.confirm) {
+							return;
 						}
+						// 先调接口解除 openId 绑定（依赖 token），再清本地缓存
+						userLogout().then(() => {
+							this._clearLoginStorage();
+						}).catch(() => {
+							this._clearLoginStorage();
+						});
 					}
+				});
+			},
+			_clearLoginStorage: function() {
+				let wAppId = uni.getStorageSync('wAppId');
+				let language = uni.getStorageSync('language');
+				uni.clearStorageSync();
+				if (wAppId) {
+					uni.setStorageSync('wAppId', wAppId);
+				}
+				if (language) {
+					uni.setStorageSync('language', language);
+				}
+				uni.reLaunch({
+					url: '/pages/login/login'
 				});
 			}
 		}

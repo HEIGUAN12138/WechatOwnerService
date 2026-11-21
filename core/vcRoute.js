@@ -19,12 +19,6 @@ import {
 import mapping from '../constant/MappingConstant.js'
 
 import {
-	getStorageSync,
-	getWAppId
-} from '../lib/java110/utils/StorageUtil.js';
-
-
-import {
 	getHcCode
 } from '../api/webView/webViewApi.js';
 
@@ -110,9 +104,7 @@ export function navigateToMall(_param) {
 		navigateMP(_url)
 		// #endif
 		// #ifdef APP-PLUS
-		uni.navigateTo({
-			url: '/pages/hcWebView/hcWebView?wAppId=' + getWAppId()
-		});
+		navigateH5(_url);
 		// #endif
 		return;
 	}
@@ -132,9 +124,7 @@ export function navigateToMall(_param) {
 		navigateMP(_url)
 		// #endif
 		// #ifdef APP-PLUS
-		uni.navigateTo({
-			url: '/pages/hcWebView/hcWebView?wAppId=' + getWAppId()
-		});
+		navigateH5(_url);
 		// #endif
 	})
 

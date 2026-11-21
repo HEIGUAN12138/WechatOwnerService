@@ -79,6 +79,7 @@
 	import {refreshOwner} from '@/api/owner/ownerApi.js';
 	import {loadLoginOwner,getMemberId,hasAuthOwner} from '../../api/owner/ownerApi.js';
 	import {getCommunityId,getCommunityName}  from '../../api/community/communityApi.js';
+	import {userLogout} from '@/api/user/userApi.js';
 	import conf from '@/conf/config.js';
 	const constant = context.constant;
 	const factory = context.factory;
@@ -229,39 +230,25 @@
 				});
 			},
 			_doLogoutUser: function() {
-				let _data = {
-					token: uni.getStorageSync('token')
+				// 先调接口解除 openId 绑定（依赖 token），再清本地缓存
+				userLogout().then(() => {
+					this._clearLoginStorage();
+				}).catch(() => {
+					this._clearLoginStorage();
+				});
+			},
+			_clearLoginStorage: function() {
+				let wAppId = uni.getStorageSync(constant.mapping.W_APP_ID);
+				let language = uni.getStorageSync('language');
+				uni.clearStorageSync();
+				if (wAppId) {
+					uni.setStorageSync(constant.mapping.W_APP_ID, wAppId);
 				}
-				let that = this;
-				context.request({
-					url: constant.url.userLogout,
-					header: context.getHeaders(),
-					method: "POST",
-					data: _data,
-					success: function(res) {
-						if (res.statusCode != 200) {
-							uni.showToast({
-								icon: "none",
-								title: res.data
-							});
-							return;
-						}
-						let wAppId = uni.getStorageSync(constant.mapping.W_APP_ID);
-						uni.clearStorageSync();
-						if (wAppId != null && wAppId != undefined && wAppId != '') {
-							uni.setStorageSync(constant.mapping.W_APP_ID, wAppId);
-						}
-						that.vc.navigateTo({
-							url: '/pages/login/login'
-						});
-					},
-					fail: function(error) {
-						// 调用服务端登录接口失败
-						uni.showToast({
-							title: '调用接口失败'
-						});
-						console.log(error);
-					}
+				if (language) {
+					uni.setStorageSync('language', language);
+				}
+				uni.reLaunch({
+					url: '/pages/login/login'
 				});
 			}
 		}

@@ -32,8 +32,6 @@ import {
 
 import {getStorageSync,setStorageSync} from '../../lib/java110/utils/StorageUtil.js'
 
-import {uuid} from '../../lib/java110/utils/SeqUtil.js'
-
 import {getWAppId} from '../../lib/java110/utils/StorageUtil.js'
 
 const ACTION_NAVIGATE_TO = "navigateTo"; // 跳转
@@ -183,9 +181,11 @@ export function reciveMessage(event, that) {
 	}
 	console.log('_data', _data);
 	if (_data.action == ACTION_NAVIGATE_TO) {
-		uni.navigateTo({
-			url: '/pages/hcWebView/hcWebView?java110Id='+uuid()
-		});
+		if (!isNull(_data.url)) {
+			// #ifdef H5
+			window.location.href = _data.url;
+			// #endif
+		}
 		return;
 	} else if (_data.action == ACTION_REFRESH_TOKEN) {
 		//跳转登录

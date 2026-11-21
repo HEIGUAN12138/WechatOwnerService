@@ -34,7 +34,6 @@ import preFeeLangMsg from './fee/preFee_lang'
 import qrCodeCashierLangMsg from './fee/qrCodeCashier_lang'
 import repairPayLangMsg from './fee/repairPay_lang'
 import rulePreFeeLangMsg from './fee/rulePreFee_lang'
-import hcWebViewLangMsg from './hcWebView/hcWebView_lang'
 import hcWebViewRefreshLangMsg from './hcWebViewRefresh/hcWebViewRefresh_lang'
 import homemakingLangMsg from './homemaking/homemaking_lang'
 import authOwnerLangMsg from './index/authOwner_lang'
@@ -87,7 +86,6 @@ export default {
     ...qrCodeCashierLangMsg['zh-CN'],
     ...repairPayLangMsg['zh-CN'],
     ...rulePreFeeLangMsg['zh-CN'],
-    ...hcWebViewLangMsg['zh-CN'],
     ...hcWebViewRefreshLangMsg['zh-CN'],
     ...homemakingLangMsg['zh-CN'],
     ...authOwnerLangMsg['zh-CN'],
@@ -139,7 +137,6 @@ export default {
     ...qrCodeCashierLangMsg['en'],
     ...repairPayLangMsg['en'],
     ...rulePreFeeLangMsg['en'],
-    ...hcWebViewLangMsg['en'],
     ...hcWebViewRefreshLangMsg['en'],
     ...homemakingLangMsg['en'],
     ...authOwnerLangMsg['en'],
@@ -191,7 +188,6 @@ export default {
     ...qrCodeCashierLangMsg['zh-TW'],
     ...repairPayLangMsg['zh-TW'],
     ...rulePreFeeLangMsg['zh-TW'],
-    ...hcWebViewLangMsg['zh-TW'],
     ...hcWebViewRefreshLangMsg['zh-TW'],
     ...homemakingLangMsg['zh-TW'],
     ...authOwnerLangMsg['zh-TW'],

@@ -50,10 +50,9 @@
 			},
 			_advertJump: function(ad) {
 				// 站外
-				let url = encodeURIComponent(ad.picLink)
-				uni.navigateTo({
-					url: '/pages/hcWebView/hcWebView?url=' + url
-				})
+				// #ifdef H5
+				window.location.href = ad.picLink;
+				// #endif
 			},
 		}
 	}

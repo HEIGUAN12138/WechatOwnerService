@@ -464,4 +464,25 @@ export function wechatLogin(_data) {
 	})
 }
 
+/**
+ * 退出登录：注销 token 并解除 openId 绑定
+ */
+export function userLogout() {
+	return new Promise((resolve, reject) => {
+		requestNoAuth({
+			url: url.userLogout,
+			method: "POST",
+			data: {
+				token: uni.getStorageSync('token')
+			},
+			success: function(res) {
+				resolve(res.data);
+			},
+			fail: function(e) {
+				reject(e);
+			}
+		});
+	})
+}
+
 
